@@ -105,8 +105,8 @@ const Navbar = ({ logout, logOut }) => {
                     <div className="flex items-center justify-between">
                         {/* Logo */}
                         <Link href="/" className="flex items-center space-x-2">
-                            <div className="flex items-center text-orange-500 text-2xl md:text-3xl font-bold">
-                                <span className="text-green-500">Koo</span>King
+                            <div style={{ fontFamily: "'Comic Sans MS', 'Comic Sans', cursive" }} className="flex items-center text-green-500 text-2xl md:text-3xl font-bold">
+                                <span className="text-red-500">Grub</span>ly
                             </div>
                         </Link>
 
@@ -116,13 +116,13 @@ const Navbar = ({ logout, logOut }) => {
                                 <input
                                     type="text"
                                     placeholder="Find restaurants, dishes, or cuisines..."
-                                    className="w-full py-2 px-4 pr-10 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent transition-all duration-200"
+                                    className="w-full py-2 px-4 pr-10 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-red-400 focus:border-transparent transition-all duration-200"
                                     value={searchQuery}
                                     onChange={(e) => setSearchQuery(e.target.value)}
                                 />
                                 <button
                                     type="submit"
-                                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-orange-500 transition-colors"
+                                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-red-500 transition-colors"
                                 >
                                     <IoSearchSharp className="text-xl" />
                                 </button>
@@ -134,7 +134,7 @@ const Navbar = ({ logout, logOut }) => {
                             {!localStorage.getItem("user") ? (
                                 <div className="flex items-center gap-3">
                                     <button
-                                        className="relative flex items-center bg-orange-500 text-white px-4 py-2 rounded-full shadow-md hover:bg-orange-600 transition-colors"
+                                        className="relative flex items-center bg-red-500 text-white px-4 py-2 rounded-full shadow-md hover:bg-red-600 transition-colors"
                                         onClick={() => setCartOpen(true)}
                                     >
                                         <FaShoppingCart className="mr-2" />
@@ -143,7 +143,7 @@ const Navbar = ({ logout, logOut }) => {
                                     </button>
                                     <Link
                                         href="/login"
-                                        className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 shadow-md hover:shadow-lg"
+                                        className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 shadow-md hover:shadow-lg"
                                     >
                                         Login
                                     </Link>
@@ -173,7 +173,7 @@ const Navbar = ({ logout, logOut }) => {
                                                     <li>
                                                         <Link
                                                             href="/myaccount"
-                                                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors duration-150"
+                                                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-150"
                                                             onClick={() => setDropdown(false)}
                                                         >
                                                             My Account
@@ -182,7 +182,7 @@ const Navbar = ({ logout, logOut }) => {
                                                     <li>
                                                         <Link
                                                             href="/orders"
-                                                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors duration-150"
+                                                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-150"
                                                             onClick={() => setDropdown(false)}
                                                         >
                                                             My Orders
@@ -191,7 +191,7 @@ const Navbar = ({ logout, logOut }) => {
                                                     <li>
                                                         <button
                                                             onClick={logout}
-                                                            className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors duration-150"
+                                                            className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-150"
                                                         >
                                                             Log Out
                                                         </button>
@@ -212,7 +212,7 @@ const Navbar = ({ logout, logOut }) => {
                                 <input
                                     type="text"
                                     placeholder="Search restaurants..."
-                                    className="w-full py-2 px-4 pr-10 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent"
+                                    className="w-full py-2 px-4 pr-10 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-red-400 focus:border-transparent"
                                     value={searchQuery}
                                     onChange={(e) => setSearchQuery(e.target.value)}
                                 />
@@ -245,7 +245,7 @@ const Navbar = ({ logout, logOut }) => {
                                     {/* Cart Items */}
                                     <div className="p-6 border-r">
                                         <h4 className="text-lg font-semibold mb-4 flex items-center">
-                                            <FaShoppingCart className="mr-2 text-orange-500" />
+                                            <FaShoppingCart className="mr-2 text-red-500" />
                                             Order Summary
                                         </h4>
 
@@ -269,7 +269,7 @@ const Navbar = ({ logout, logOut }) => {
                                                 <div className="border-t pt-3 mt-3">
                                                     <div className="flex justify-between items-center font-bold text-lg">
                                                         <span>Total:</span>
-                                                        <span className="text-orange-500">Rs. {cartTotal}</span>
+                                                        <span className="text-red-500">Rs. {cartTotal}</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -279,7 +279,7 @@ const Navbar = ({ logout, logOut }) => {
                                     {/* Checkout Form */}
                                     <div className="p-6">
                                         <h4 className="text-lg font-semibold mb-4 flex items-center">
-                                            <FaMotorcycle className="mr-2 text-orange-500" />
+                                            <FaMotorcycle className="mr-2 text-red-500" />
                                             Delivery Information
                                         </h4>
 
@@ -291,7 +291,7 @@ const Navbar = ({ logout, logOut }) => {
                                                     placeholder="Enter your phone number"
                                                     value={phone}
                                                     onChange={(e) => setPhone(e.target.value)}
-                                                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                                                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
                                                 />
                                             </div>
 
@@ -302,7 +302,7 @@ const Navbar = ({ logout, logOut }) => {
                                                     value={address}
                                                     onChange={(e) => setAddress(e.target.value)}
                                                     rows={3}
-                                                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                                                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
                                                 />
                                             </div>
 
@@ -321,20 +321,13 @@ const Navbar = ({ logout, logOut }) => {
                                                     disabled={!(phone && address && cartItemCount > 0)}
                                                     className="w-full bg-green-500 text-white py-3 rounded-lg font-semibold hover:bg-green-600 disabled:bg-green-200 disabled:cursor-not-allowed transition-colors flex items-center justify-center"
                                                 >
-                                                    <Image
-                                                        src="/esewa-logo.png"
-                                                        alt="eSewa"
-                                                        width={60}
-                                                        height={20}
-                                                        className="mr-2"
-                                                    />
                                                     Pay with eSewa
                                                 </button>
 
                                                 <button
                                                     onClick={handleCashPay}
                                                     disabled={!(phone && address && cartItemCount > 0)}
-                                                    className="w-full bg-orange-500 text-white py-3 rounded-lg font-semibold hover:bg-orange-600 disabled:bg-orange-200 disabled:cursor-not-allowed transition-colors"
+                                                    className="w-full bg-red-500 text-white py-3 rounded-lg font-semibold hover:bg-red-600 disabled:bg-red-200 disabled:cursor-not-allowed transition-colors"
                                                 >
                                                     Pay on Delivery
                                                 </button>
@@ -356,24 +349,24 @@ const Navbar = ({ logout, logOut }) => {
                         {/* Seller Logo and Navigation */}
                         <div className="flex items-center space-x-6">
                             <Link href="/seller" className="flex items-center space-x-2">
-                                <IoRestaurantOutline className="text-orange-500 text-xl" />
-                                <span className="text-orange-500 text-xl font-bold">KooKing Seller</span>
+                                <IoRestaurantOutline className="text-red-500 text-xl" />
+                                <span className="text-red-500 text-xl font-bold">KooKing Seller</span>
                             </Link>
 
                             {localStorage.getItem("seller") && (
                                 <nav className="hidden md:flex items-center space-x-1">
                                     <Link
                                         href="/seller/additem"
-                                        className="flex items-center space-x-1 px-3 py-2 rounded-lg text-sm font-medium text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors duration-150"
+                                        className="flex items-center space-x-1 px-3 py-2 rounded-lg text-sm font-medium text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-150"
                                     >
-                                        <FaPlusCircle className="text-orange-500" />
+                                        <FaPlusCircle className="text-red-500" />
                                         <span>Add Item</span>
                                     </Link>
                                     <Link
                                         href="/seller/updateitem"
-                                        className="flex items-center space-x-1 px-3 py-2 rounded-lg text-sm font-medium text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors duration-150"
+                                        className="flex items-center space-x-1 px-3 py-2 rounded-lg text-sm font-medium text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-150"
                                     >
-                                        <FaEdit className="text-orange-500" />
+                                        <FaEdit className="text-red-500" />
                                         <span>Update Item</span>
                                     </Link>
                                 </nav>
@@ -385,7 +378,7 @@ const Navbar = ({ logout, logOut }) => {
                             {!localStorage.getItem("seller") ? (
                                 <Link
                                     href="/seller/login"
-                                    className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200"
+                                    className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200"
                                 >
                                     Seller Login
                                 </Link>
@@ -408,16 +401,16 @@ const Navbar = ({ logout, logOut }) => {
                         <nav className="mt-3 flex md:hidden justify-center space-x-4 border-t border-gray-100 pt-3">
                             <Link
                                 href="/seller/additem"
-                                className="flex items-center space-x-1 px-3 py-2 rounded-lg text-sm font-medium text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors duration-150"
+                                className="flex items-center space-x-1 px-3 py-2 rounded-lg text-sm font-medium text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-150"
                             >
-                                <FaPlusCircle className="text-orange-500" />
+                                <FaPlusCircle className="text-red-500" />
                                 <span>Add Item</span>
                             </Link>
                             <Link
                                 href="/seller/updateitem"
-                                className="flex items-center space-x-1 px-3 py-2 rounded-lg text-sm font-medium text-gray-700 hover:bg-orange-50 hover:text-orange-600 transition-colors duration-150"
+                                className="flex items-center space-x-1 px-3 py-2 rounded-lg text-sm font-medium text-gray-700 hover:bg-red-50 hover:text-red-600 transition-colors duration-150"
                             >
-                                <FaEdit className="text-orange-500" />
+                                <FaEdit className="text-red-500" />
                                 <span>Update Item</span>
                             </Link>
                         </nav>

@@ -69,7 +69,7 @@ export default function Home({ restaurants }) {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-orange-500 to-orange-600 py-16 md:py-24 text-white overflow-hidden">
+      <section className="relative bg-gradient-to-r from-red-500 to-red-600 py-16 md:py-24 text-white overflow-hidden">
         <div className="absolute inset-0 bg-black opacity-10"></div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl mx-auto text-center">
@@ -85,7 +85,7 @@ export default function Home({ restaurants }) {
               <input
                 type="text"
                 placeholder="Search for restaurants..."
-                className="w-full py-4 px-6 rounded-full text-gray-800 shadow-lg focus:outline-none focus:ring-2 focus:ring-orange-400"
+                className="w-full py-4 px-6 rounded-full text-gray-800 shadow-lg focus:outline-none focus:ring-2 focus:ring-red-400"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
@@ -100,7 +100,7 @@ export default function Home({ restaurants }) {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Top Food Categories</h2>
-            <div className="w-20 h-1 bg-orange-500 mx-auto"></div>
+            <div className="w-20 h-1 bg-red-500 mx-auto"></div>
           </div>
           
           <Swiper
@@ -110,7 +110,7 @@ export default function Home({ restaurants }) {
               type: "bullets", 
               clickable: true,
               bulletClass: "swiper-pagination-bullet bg-gray-400 opacity-50",
-              bulletActiveClass: "swiper-pagination-bullet-active bg-orange-500 opacity-100"
+              bulletActiveClass: "swiper-pagination-bullet-active bg-red-500 opacity-100"
             }}
             autoplay={{ 
               delay: 3000,
@@ -161,7 +161,7 @@ export default function Home({ restaurants }) {
             <p className="text-gray-600 max-w-2xl mx-auto">
               Discover the most popular restaurants in your area, handpicked for their exceptional quality and service
             </p>
-            <div className="w-20 h-1 bg-orange-500 mx-auto mt-4"></div>
+            <div className="w-20 h-1 bg-red-500 mx-auto mt-4"></div>
           </div>
           
           {filteredRestaurants.length > 0 ? (
@@ -188,12 +188,12 @@ export default function Home({ restaurants }) {
                     <div className="p-5">
                       <div className="flex justify-between items-start mb-2">
                         <h3 className="text-xl font-bold text-gray-800 truncate">{restaurant.name}</h3>
-                        <div className="flex items-center bg-orange-100 text-orange-700 px-2 py-1 rounded-full text-sm font-semibold">
+                        <div className="flex items-center bg-red-100 text-red-700 px-2 py-1 rounded-full text-sm font-semibold">
                           <FaStar className="mr-1" /> 4.8
                         </div>
                       </div>
                       <p className="text-gray-600 mb-3 flex items-center">
-                        <FaUtensils className="mr-2 text-orange-500" />
+                        <FaUtensils className="mr-2 text-red-500" />
                         {restaurant.address}
                       </p>
                       <div className="flex justify-between items-center">
