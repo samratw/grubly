@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import Image from 'next/image';
 import Link from 'next/link';
-import { FaChevronDown, FaShoppingCart, FaPlusCircle, FaEdit, FaMotorcycle } from "react-icons/fa";
+import { FaChevronDown, FaShoppingCart, FaMotorcycle } from "react-icons/fa";
 import { MdClose, MdInfoOutline } from 'react-icons/md';
 import { IoSearchSharp, IoRestaurantOutline } from 'react-icons/io5';
 
@@ -43,49 +42,11 @@ const Navbar = ({ logout }) => {
     };
 
     const handleEsewaCheckout = async () => {
-        const response = await fetch('/api/esewa', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ cart: Object.values(cart) }),
-        });
-
-        const res = await response.json();
-        if (res.url) {
-            const response = await fetch('/api/order', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    cart: Object.values(cart),
-                    user_email: JSON.parse(localStorage.getItem("user")).email,
-                    phone,
-                    address,
-                    paymentMethod: 'eSewa'
-                }),
-            });
-            await response.json();
-            window.location.href = res.url;
-        }
+        
     };
 
     const handleCashPay = async () => {
-        const response = await fetch('/api/order', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                cart: Object.values(cart),
-                user_email: JSON.parse(localStorage.getItem("user")).email,
-                phone,
-                address,
-                paymentMethod: 'Cash'
-            }),
-        });
-
-        const data = await response.json();
-        if (data.success) {
-            router.push('/success');
-        } else {
-            router.push('/failure');
-        }
+        
     };
 
     return (

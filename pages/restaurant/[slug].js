@@ -14,7 +14,6 @@ import {
   FaMotorcycle
 } from 'react-icons/fa';
 import Image from 'next/image';
-import { useRouter } from 'next/router';
 
 const Restaurant = ({ restaurant, items }) => {
     const [likes, setLikes] = useState(restaurant.likes || 0);
@@ -22,9 +21,7 @@ const Restaurant = ({ restaurant, items }) => {
     const [phone, setPhone] = useState('');
     const [address, setAddress] = useState('');
     const [cartOpen, setCartOpen] = useState(false);
-    const [activeCategory, setActiveCategory] = useState('');
     const [cart, setCart] = useState({});
-    const router = useRouter();
 
     // Initialize cart from localStorage or empty object
     useEffect(() => {
@@ -87,56 +84,11 @@ const Restaurant = ({ restaurant, items }) => {
     };
 
     const handleEsewaCheckout = async () => {
-        const response = await fetch('/api/esewa', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ cart: Object.values(cart) }),
-        });
-
-        const res = await response.json();
-        if (res.url) {
-            const response = await fetch('/api/order', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ 
-                    cart: Object.values(cart), 
-                    user_email: JSON.parse(localStorage.getItem("user")).email, 
-                    phone, 
-                    address, 
-                    paymentMethod: 'eSewa',
-                    restaurantId: restaurant._id,
-                    restaurantName: restaurant.name
-                }),
-            });
-            await response.json();
-            window.location.href = res.url;
-        }
+        
     };
 
     const handleCashPay = async () => {
-        const response = await fetch('/api/order', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ 
-                cart: Object.values(cart), 
-                user_email: JSON.parse(localStorage.getItem("user")).email, 
-                phone, 
-                address, 
-                paymentMethod: 'Cash',
-                restaurantId: restaurant._id,
-                restaurantName: restaurant.name
-            }),
-        });
-
-        const data = await response.json();
-        if (data.success) {
-            // Clear cart after successful order
-            setCart({});
-            setQuantities(items.reduce((acc, item) => ({ ...acc, [item._id]: 0 }), {}));
-            router.push('/success');
-        } else {
-            router.push('/failure');
-        }
+        
     };
 
     const cartItemCount = Object.values(cart).reduce((total, item) => total + item.quantity, 0);
