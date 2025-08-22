@@ -1,7 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import mongoose from 'mongoose';
-import Item from '../../models/Item';
-import Seller from '../../models/Seller';
 import { 
   MdLocationOn, 
   MdOutlineCategory, 
@@ -16,12 +13,11 @@ import {
   FaClock,
   FaMotorcycle
 } from 'react-icons/fa';
-import { IoIosArrowBack } from 'react-icons/io';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 
 const Restaurant = ({ restaurant, items }) => {
-    const [likes, setLikes] = useState(restaurant.likes);
+    const [likes, setLikes] = useState(restaurant.likes || 0);
     const [liked, setLiked] = useState(false);
     const [phone, setPhone] = useState('');
     const [address, setAddress] = useState('');
@@ -172,7 +168,7 @@ const Restaurant = ({ restaurant, items }) => {
                                     </div>
                                     <div className="flex items-center mt-2">
                                         <div className="flex items-center bg-red-100 text-red-700 px-2 py-1 rounded-full text-sm">
-                                            <FaStar className="mr-1" /> 4.8
+                                            <FaStar className="mr-1" /> {restaurant.rating || "4.8"}
                                         </div>
                                         <div className="flex items-center bg-blue-100 text-blue-700 px-2 py-1 rounded-full text-sm ml-2">
                                             <FaClock className="mr-1" /> 30-40 min
@@ -199,7 +195,7 @@ const Restaurant = ({ restaurant, items }) => {
                 <div className="mb-8">
                     <div className="flex items-center mb-4">
                         <MdOutlineCategory className="text-red-500 text-xl mr-2" />
-                        <h2 className="text-xl font-bold text-gray-900">Menu Categories</h2>
+                        <h2 className="text-xl font-bold text-black">Menu Categories</h2>
                     </div>
                     <div className="flex flex-wrap gap-2">
                         {categories.map((category) => (
@@ -211,11 +207,7 @@ const Restaurant = ({ restaurant, items }) => {
                                         element.scrollIntoView({ behavior: 'smooth' });
                                     }
                                 }}
-                                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-                                    activeCategory === category 
-                                        ? 'bg-red-500 text-white' 
-                                        : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                                }`}
+                                className="px-4 py-2 rounded-full text-sm font-medium transition-colors bg-red-500 text-white"
                             >
                                 {category}
                             </button>
@@ -447,18 +439,105 @@ const Restaurant = ({ restaurant, items }) => {
     );
 };
 
+// This function would fetch data from your API
 export async function getServerSideProps(context) {
-    if (!mongoose.connections[0].readyState) {
-        await mongoose.connect(process.env.MONGO_URI);
+  const { id } = context.query;
+  
+  // In a real application, you would fetch this from your API
+  // This is sample data for demonstration
+  const restaurants = {
+    "1": {
+      _id: "1",
+      name: "Pizza Palace",
+      image: "https://images.pexels.com/photos/825661/pexels-photo-825661.jpeg?auto=compress&cs=tinysrgb&w=600",
+      address: "123 Main St, City",
+      rating: "4.5",
+      likes: 120,
+      status: "Open Now",
+      cuisine: "Italian"
+    },
+    "2": {
+      _id: "2",
+      name: "Burger Barn",
+      image: "https://images.pexels.com/photos/1199957/pexels-photo-1199957.jpeg?auto=compress&cs=tinysrgb&w=600",
+      address: "456 Oak Ave, Town",
+      rating: "4.8",
+      likes: 200,
+      status: "Open Now",
+      cuisine: "American"
     }
-    const restaurant = await Seller.findById(context.query.id);
-    const items = await Item.find({ email: restaurant.email });
+  };
+
+  const menuItems = {
+    "1": [
+      {
+        _id: "101",
+        name: "Margherita Pizza",
+        desc: "Classic pizza with tomato sauce and mozzarella",
+        price: 12.99,
+        category: "Pizza",
+        image: "https://images.pexels.com/photos/825661/pexels-photo-825661.jpeg?auto=compress&cs=tinysrgb&w=600"
+      },
+      {
+        _id: "102",
+        name: "Pepperoni Pizza",
+        desc: "Pizza with pepperoni and cheese",
+        price: 14.99,
+        category: "Pizza",
+        image: "https://images.pexels.com/photos/825661/pexels-photo-825661.jpeg?auto=compress&cs=tinysrgb&w=600"
+      },
+      {
+        _id: "103",
+        name: "Garlic Bread",
+        desc: "Freshly baked garlic bread",
+        price: 5.99,
+        category: "Sides",
+        image: "https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?auto=compress&cs=tinysrgb&w=600"
+      }
+    ],
+    "2": [
+      {
+        _id: "201",
+        name: "Classic Burger",
+        desc: "Beef patty with lettuce, tomato, and special sauce",
+        price: 9.99,
+        category: "Burgers",
+        image: "https://images.pexels.com/photos/1199957/pexels-photo-1199957.jpeg?auto=compress&cs=tinysrgb&w=600"
+      },
+      {
+        _id: "202",
+        name: "Cheeseburger",
+        desc: "Classic burger with cheese",
+        price: 10.99,
+        category: "Burgers",
+        image: "https://images.pexels.com/photos/1199957/pexels-photo-1199957.jpeg?auto=compress&cs=tinysrgb&w=600"
+      },
+      {
+        _id: "203",
+        name: "French Fries",
+        desc: "Crispy golden fries",
+        price: 4.99,
+        category: "Sides",
+        image: "https://images.pexels.com/photos/1586942/pexels-photo-1586942.jpeg?auto=compress&cs=tinysrgb&w=600"
+      }
+    ]
+  };
+
+  const restaurant = restaurants[id] || null;
+  const items = menuItems[id] || [];
+
+  if (!restaurant) {
     return {
-        props: {
-            restaurant: JSON.parse(JSON.stringify(restaurant)),
-            items: JSON.parse(JSON.stringify(items))
-        }
+      notFound: true,
     };
+  }
+
+  return {
+    props: {
+      restaurant,
+      items,
+    },
+  };
 }
 
 export default Restaurant;

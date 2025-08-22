@@ -7,15 +7,16 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { IoSearchSharp } from "react-icons/io5";
 import { FaHeart, FaStar, FaUtensils } from "react-icons/fa6";
-import Seller from "../models/Seller";
-import mongoose from "mongoose";
 import Image from "next/image";
 
-export default function Home({ restaurants }) {
+export default function Home({ restaurants = [] }) {
   const [searchTerm, setSearchTerm] = useState("");
 
-  const filteredRestaurants = restaurants.filter((restaurant) =>
-    restaurant.name.toLowerCase().includes(searchTerm.toLowerCase())
+  // Filter restaurants based on search term
+  const filteredRestaurants = restaurants.filter(restaurant =>
+    restaurant.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    restaurant.address.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    restaurant.cuisine?.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   const TopFoods = [
@@ -189,7 +190,7 @@ export default function Home({ restaurants }) {
                       <div className="flex justify-between items-start mb-2">
                         <h3 className="text-xl font-bold text-gray-800 truncate">{restaurant.name}</h3>
                         <div className="flex items-center bg-red-100 text-red-700 px-2 py-1 rounded-full text-sm font-semibold">
-                          <FaStar className="mr-1" /> 4.8
+                          <FaStar className="mr-1" /> {restaurant.rating || "4.8"}
                         </div>
                       </div>
                       <p className="text-gray-600 mb-3 flex items-center">
@@ -199,10 +200,10 @@ export default function Home({ restaurants }) {
                       <div className="flex justify-between items-center">
                         <div className="flex items-center text-gray-500">
                           <FaHeart className="text-red-500 mr-1" />
-                          <span>{restaurant.likes} likes</span>
+                          <span>{restaurant.likes || 0} likes</span>
                         </div>
-                        <span className="px-2 py-1 bg-green-100 text-green-700 text-xs font-medium rounded-full">
-                          Open Now
+                        <span className={`px-2 py-1 ${restaurant.status === "Open Now" ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'} text-xs font-medium rounded-full`}>
+                          {restaurant.status || "Open Now"}
                         </span>
                       </div>
                     </div>
@@ -221,12 +222,56 @@ export default function Home({ restaurants }) {
   );
 }
 
-export async function getServerSideProps(context) {
-  if (!mongoose.connections[0].readyState) {
-    await mongoose.connect(process.env.MONGO_URI);
-  }
-  let restaurants = await Seller.find();
+// This function would typically fetch data from an API
+// For now, I'll add a getStaticProps example
+export async function getStaticProps() {
+  // In a real application, you would fetch this from your API
+  const restaurants = [
+    {
+      _id: "1",
+      name: "Pizza Palace",
+      image: "https://images.pexels.com/photos/825661/pexels-photo-825661.jpeg?auto=compress&cs=tinysrgb&w=600",
+      address: "123 Main St, City",
+      rating: "4.5",
+      likes: 120,
+      status: "Open Now",
+      cuisine: "Italian"
+    },
+    {
+      _id: "2",
+      name: "Burger Barn",
+      image: "https://images.pexels.com/photos/1199957/pexels-photo-1199957.jpeg?auto=compress&cs=tinysrgb&w=600",
+      address: "456 Oak Ave, Town",
+      rating: "4.8",
+      likes: 200,
+      status: "Open Now",
+      cuisine: "American"
+    },
+    {
+      _id: "3",
+      name: "Sushi Spot",
+      image: "https://images.pexels.com/photos/1052189/pexels-photo-1052189.jpeg?auto=compress&cs=tinysrgb&w=600",
+      address: "789 Pine Rd, Village",
+      rating: "4.7",
+      likes: 150,
+      status: "Closed",
+      cuisine: "Japanese"
+    },
+    {
+      _id: "4",
+      name: "Taco Terrace",
+      image: "https://images.pexels.com/photos/4958522/pexels-photo-4958522.jpeg?auto=compress&cs=tinysrgb&w=600",
+      address: "101 Elm St, Borough",
+      rating: "4.6",
+      likes: 180,
+      status: "Open Now",
+      cuisine: "Mexican"
+    }
+  ];
+
   return {
-    props: { restaurants: JSON.parse(JSON.stringify(restaurants)) },
+    props: {
+      restaurants,
+    },
   };
 }
