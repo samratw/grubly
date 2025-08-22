@@ -1,21 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
+import React, { useState } from 'react';
 import Link from 'next/link';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
-const signup = () => {
+const Signup = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
     const [password, setPassword] = useState('');
-    const router = useRouter();
-
-    useEffect(() => {
-        if (localStorage.getItem("user")) {
-            router.push("/");
-        }
-    }, [router]);
 
     const handleChange = (e) => {
         if (e.target.name === "name") {
@@ -32,58 +22,10 @@ const signup = () => {
         }
     };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-
-        const data = { name, email, phone, password };
-
-        try {
-            const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/signup`, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(data),
-            });
-
-            if (!res.ok) {
-                // Handle non-200 responses
-                const errorData = await res.json();
-                throw new Error(errorData.error || "Something went wrong.");
-            }
-
-            const response = await res.json();
-            setName("");
-            setEmail("");
-            setPhone("");
-            setPassword("");
-
-            toast.success(response.success, {
-                position: "top-right",
-                autoClose: 15000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "light",
-            });
-        } catch (error) {
-            console.log(error.message);
-            toast.error(error.message, {
-                position: "top-right",
-                autoClose: 10000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "light",
-            });
-        }
-    };
+    const handleSubmit = async (e) => {};
 
     return (
         <div className="flex min-h-full flex-col justify-center px-6 py-14">
-            <ToastContainer style={{ width: '700px' }} />
             <p className="m-4 text-center text-lg text-gray-500">
                 Already Have An Account?
                 <Link href={"/login"} className="mx-1 font-semibold text-red-500 hover:text-red-400">Login</Link>
@@ -132,4 +74,4 @@ const signup = () => {
     )
 }
 
-export default signup;
+export default Signup;

@@ -83,13 +83,9 @@ const Restaurant = ({ restaurant, items }) => {
         setLikes((prevLikes) => (liked ? prevLikes - 1 : prevLikes + 1));
     };
 
-    const handleEsewaCheckout = async () => {
-        
-    };
+    const handleEsewaCheckout = async () => {};
 
-    const handleCashPay = async () => {
-        
-    };
+    const handleCashPay = async () => {};
 
     const cartItemCount = Object.values(cart).reduce((total, item) => total + item.quantity, 0);
     const cartTotal = Object.values(cart).reduce((total, item) => total + (item.price * item.quantity), 0);
@@ -368,7 +364,6 @@ const Restaurant = ({ restaurant, items }) => {
                                                 disabled={!(phone && address && cartItemCount > 0)}
                                                 className="w-full bg-green-500 text-white py-3 rounded-lg font-semibold hover:bg-green-600 disabled:bg-green-200 disabled:cursor-not-allowed transition-colors flex items-center justify-center"
                                             >
-                                                <div className="mr-2 font-bold">eSewa</div>
                                                 Pay with eSewa
                                             </button>
                                             
@@ -395,14 +390,14 @@ const Restaurant = ({ restaurant, items }) => {
 export async function getServerSideProps(context) {
   const { id } = context.query;
   
-  // In a real application, you would fetch this from your API
-  // This is sample data for demonstration
+  // In real, we will fetch this from API i.e backend i.e database
+  // This is a sample data for demonstration
   const restaurants = {
     "1": {
       _id: "1",
       name: "Pizza Palace",
       image: "https://images.pexels.com/photos/825661/pexels-photo-825661.jpeg?auto=compress&cs=tinysrgb&w=600",
-      address: "123 Main St, City",
+      address: "Lazimpat, Kathmandu",
       rating: "4.5",
       likes: 120,
       status: "Open Now",
@@ -410,9 +405,9 @@ export async function getServerSideProps(context) {
     },
     "2": {
       _id: "2",
-      name: "Burger Barn",
+      name: "Burger House",
       image: "https://images.pexels.com/photos/1199957/pexels-photo-1199957.jpeg?auto=compress&cs=tinysrgb&w=600",
-      address: "456 Oak Ave, Town",
+      address: "Tokha, Kathmandu",
       rating: "4.8",
       likes: 200,
       status: "Open Now",
