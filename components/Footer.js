@@ -53,7 +53,7 @@ const Footer = () => {
             <h3 className="text-xl font-bold mb-6 pb-2 border-b-2 border-red-500 inline-block">We're Grubly</h3>
             <ul className="space-y-3">
               <li>
-                <Link href="/about-us" className="flex items-center text-gray-200 hover:text-red-400 transition-colors duration-150">
+                <Link href="/about" className="flex items-center text-gray-200 hover:text-red-400 transition-colors duration-150">
                   <FaInfoCircle className="mr-3 text-red-500" />
                   About Us
                 </Link>
