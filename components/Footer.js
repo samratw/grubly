@@ -101,12 +101,6 @@ const Footer = () => {
                   Contact Us
                 </Link>
               </li>
-              <li>
-                <Link href="/privacypolicy" className="flex items-center text-gray-200 hover:text-red-400 transition-colors duration-150">
-                  <FaFileAlt className="mr-3 text-red-500" />
-                  Privacy Policy
-                </Link>
-              </li>
             </ul>
           </div>
 
