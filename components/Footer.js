@@ -59,13 +59,13 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/available-areas" className="flex items-center text-gray-200 hover:text-red-400 transition-colors duration-150">
+                <Link href="/availableareas" className="flex items-center text-gray-200 hover:text-red-400 transition-colors duration-150">
                   <FaMapMarkerAlt className="mr-3 text-red-500" />
                   Available Areas
                 </Link>
               </li>
               <li>
-                <Link href="/delivery-charges" className="flex items-center text-gray-200 hover:text-red-400 transition-colors duration-150">
+                <Link href="/deliverycharges" className="flex items-center text-gray-200 hover:text-red-400 transition-colors duration-150">
                   <FaFileAlt className="mr-3 text-red-500" />
                   Delivery Charges
                 </Link>
@@ -84,7 +84,7 @@ const Footer = () => {
             <h3 className="text-xl font-bold mb-6 pb-2 border-b-2 border-red-500 inline-block">Get Help</h3>
             <ul className="space-y-3">
               <li>
-                <Link href="/how-to-order" className="flex items-center text-gray-200 hover:text-red-400 transition-colors duration-150">
+                <Link href="/howtoorder" className="flex items-center text-gray-200 hover:text-red-400 transition-colors duration-150">
                   <FaQuestionCircle className="mr-3 text-red-500" />
                   How to Order?
                 </Link>
@@ -96,13 +96,13 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/contact-us" className="flex items-center text-gray-200 hover:text-red-400 transition-colors duration-150">
+                <Link href="/contact" className="flex items-center text-gray-200 hover:text-red-400 transition-colors duration-150">
                   <FaHeadset className="mr-3 text-red-500" />
                   Contact Us
                 </Link>
               </li>
               <li>
-                <Link href="/privacy-policy" className="flex items-center text-gray-200 hover:text-red-400 transition-colors duration-150">
+                <Link href="/privacypolicy" className="flex items-center text-gray-200 hover:text-red-400 transition-colors duration-150">
                   <FaFileAlt className="mr-3 text-red-500" />
                   Privacy Policy
                 </Link>
@@ -159,9 +159,6 @@ const Footer = () => {
               </Link>
               <Link href="/privacy" className="text-gray-400 hover:text-red-400 text-sm transition-colors duration-150">
                 Privacy Policy
-              </Link>
-              <Link href="/cookies" className="text-gray-400 hover:text-red-400 text-sm transition-colors duration-150">
-                Cookie Policy
               </Link>
             </div>
           </div>

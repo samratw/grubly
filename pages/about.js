@@ -42,7 +42,7 @@ const About = () => {
   return (
     <>
       <Head>
-        <title>About Us - Food Delivery App</title>
+        <title>About Us - Grubly</title>
         <meta name="description" content="Meet the team behind our food delivery service" />
       </Head>
       

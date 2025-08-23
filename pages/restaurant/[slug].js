@@ -85,6 +85,8 @@ const Restaurant = ({ restaurant, items }) => {
 
     const handleEsewaCheckout = async () => {};
 
+    const handleKhaltiCheckout = async () => {};
+
     const handleCashPay = async () => {};
 
     const cartItemCount = Object.values(cart).reduce((total, item) => total + item.quantity, 0);
@@ -362,9 +364,17 @@ const Restaurant = ({ restaurant, items }) => {
                                             <button 
                                                 onClick={handleEsewaCheckout} 
                                                 disabled={!(phone && address && cartItemCount > 0)}
-                                                className="w-full bg-green-500 text-white py-3 rounded-lg font-semibold hover:bg-green-600 disabled:bg-green-200 disabled:cursor-not-allowed transition-colors flex items-center justify-center"
+                                                className="w-full bg-green-600 text-white py-3 rounded-lg font-semibold hover:bg-green-700 disabled:bg-green-200 disabled:cursor-not-allowed transition-colors flex items-center justify-center"
                                             >
                                                 Pay with eSewa
+                                            </button>
+
+                                            <button 
+                                                onClick={handleKhaltiCheckout} 
+                                                disabled={!(phone && address && cartItemCount > 0)}
+                                                className="w-full bg-purple-700 text-white py-3 rounded-lg font-semibold hover:bg-purple-800 disabled:bg-purple-200 disabled:cursor-not-allowed transition-colors flex items-center justify-center"
+                                            >
+                                                Pay with Khalti
                                             </button>
                                             
                                             <button 
