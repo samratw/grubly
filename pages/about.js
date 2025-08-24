@@ -8,34 +8,34 @@ const About = () => {
     {
       id: 1,
       name: "Samrat Wagle",
-      role: "Founder & CEO",
-      bio: "With over 5 years plus of culinary experience, Samrat brings world class cuisine to your doorstep.",
-      image: "/SamratWagle.png",
+      role: "Team Leader & Developer",
+      bio: "With over 5 years plus of culinary experience, Samrat brings world class cuisine to your doorstep. Samrat leads our development team with a passion for creating seamless food delivery experiences.",
+      image: "/images/SamratWagle.png",
       portfolio: "https://portfolio-samratwagle.vercel.app"
     },
     {
       id: 2,
-      name: "Michael Chen",
-      role: "CTO & Tech Lead",
-      bio: "Michael ensures our platform runs smoothly so you can focus on enjoying great food.",
-      image: "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=600",
-      portfolio: "https://michaelchen-dev.vercel.app"
+      name: "Bijay Raj Sigdel",
+      role: "UI/UX Designer",
+      bio: "Bijay crafts intuitive and engaging user experiences that make ordering food a breeze.",
+      image: "/images/bijay.png",
+      portfolio: "bijay.html"
     },
     {
       id: 3,
-      name: "Emma Rodriguez",
-      role: "Marketing Director",
-      bio: "Emma connects food lovers with the best local restaurants and culinary experiences.",
-      image: "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=600",
-      portfolio: "https://emmarodriguez-marketing.vercel.app"
+      name: "Shuvam Karki",
+      role: "Content Manager",
+      bio: "Shuvam curates delicious content and ensures our blog is filled with tasty tips and recipes.",
+      image: "/images/shuvam.png",
+      portfolio: "shuvam.html"
     },
     {
       id: 4,
-      name: "David Kim",
-      role: "Operations Manager",
-      bio: "David ensures that every order is delivered promptly and maintains our quality standards.",
-      image: "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=600",
-      portfolio: "https://davidkim-operations.vercel.app"
+      name: "Anamika Bhattarai",
+      role: "Git Manager",
+      bio: "Anamika keeps our codebase organized and ensures smooth collaboration among our development team.",
+      image: "/images/anamika.png",
+      portfolio: "anamika.html"
     }
   ];
 
